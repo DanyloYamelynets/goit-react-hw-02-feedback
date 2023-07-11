@@ -8,18 +8,18 @@ import {
   StatsTitle,
 } from './ButtonsStyled';
 
-const Buttons = ({ goodBtn, neutralBtn, badBtn }) => {
+const Buttons = ({ feedbackBtnClick }) => {
   return (
     <div>
       <Title>Please leave feedback</Title>
       <BtnSection>
-        <GoodButton type="button" onClick={goodBtn}>
+        <GoodButton type="button" name="good" onClick={feedbackBtnClick}>
           Good
         </GoodButton>
-        <NeutralButton type="button" onClick={neutralBtn}>
+        <NeutralButton type="button" name="neutral" onClick={feedbackBtnClick}>
           Neutral
         </NeutralButton>
-        <BadButton type="button" onClick={badBtn}>
+        <BadButton type="button" name="bad" onClick={feedbackBtnClick}>
           Bad
         </BadButton>
       </BtnSection>
@@ -29,9 +29,7 @@ const Buttons = ({ goodBtn, neutralBtn, badBtn }) => {
 };
 
 Buttons.propTypes = {
-  goodBtn: PropTypes.func.isRequired,
-  neutralBtn: PropTypes.func.isRequired,
-  badBtn: PropTypes.func.isRequired,
+  feedbackBtnClick: PropTypes.func.isRequired,
 };
 
 export default Buttons;
