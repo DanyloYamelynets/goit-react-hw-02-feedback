@@ -28,10 +28,11 @@ export class App extends Component {
     return totalFeedback > 0 ? (good * 100) / totalFeedback : 0;
   };
   render() {
+    const options = Object.keys(this.state);
     const totalFeedback = this.countTotalFeedback();
     return (
       <div className="container">
-        <Buttons feedbackBtnClick={this.feedbackBtnClick} />
+        <Buttons feedbackBtnClick={this.feedbackBtnClick} options={options} />
 
         {totalFeedback > 0 ? (
           <Statistics

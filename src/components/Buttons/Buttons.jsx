@@ -1,27 +1,23 @@
 import PropTypes from 'prop-types';
-import {
-  BtnSection,
-  GoodButton,
-  NeutralButton,
-  BadButton,
-  Title,
-  StatsTitle,
-} from './ButtonsStyled';
+import { BtnSection, StyledButton, Title, StatsTitle } from './ButtonsStyled';
 
-const Buttons = ({ feedbackBtnClick }) => {
+const Buttons = ({ feedbackBtnClick, options }) => {
   return (
     <div>
       <Title>Please leave feedback</Title>
       <BtnSection>
-        <GoodButton type="button" name="good" onClick={feedbackBtnClick}>
-          Good
-        </GoodButton>
-        <NeutralButton type="button" name="neutral" onClick={feedbackBtnClick}>
-          Neutral
-        </NeutralButton>
-        <BadButton type="button" name="bad" onClick={feedbackBtnClick}>
-          Bad
-        </BadButton>
+        {options.map(option => {
+          return (
+            <StyledButton
+              key={option}
+              type="button"
+              name={option}
+              onClick={feedbackBtnClick}
+            >
+              {option}
+            </StyledButton>
+          );
+        })}
       </BtnSection>
       <StatsTitle>Statistics</StatsTitle>
     </div>
@@ -30,6 +26,7 @@ const Buttons = ({ feedbackBtnClick }) => {
 
 Buttons.propTypes = {
   feedbackBtnClick: PropTypes.func.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default Buttons;
